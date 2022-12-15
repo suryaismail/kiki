@@ -1,10 +1,6 @@
 package com.si.kiki.model;
 
-import java.text.DecimalFormat;
-
 public class Pkg {
-  DecimalFormat df = new DecimalFormat("#.##");
-
   String pkgId;
   int weight;
   int distance;
@@ -50,27 +46,6 @@ public class Pkg {
 
   public String getOfferCode() {
     return offerCode;
-  }
-
-  // Output: pkg_id1 discount1 total_cost1
-  public String getOutputLine(OfferCodeSet offerCodeSet, int baseDeliveryCost) {
-    int totalCost = baseDeliveryCost + (weight * 10) + (distance * 5);
-    double discount = totalCost * offerCodeSet.getDiscountPercent(offerCode, distance, weight)
-        / 100.0;
-    
-    return pkgId + " " + 
-      df.format(discount) + " " + df.format(totalCost - discount);
-  }
-  
-  public String getOutputLineWithDeliveryTime(
-      OfferCodeSet offerCodeSet, int baseDeliveryCost) {
-    int totalCost = baseDeliveryCost + (weight * 10) + (distance * 5);
-    double discount = totalCost * offerCodeSet.getDiscountPercent(offerCode, distance, weight)
-        / 100.0;
-    
-    return pkgId + " "
-      + df.format(discount) + " " + df.format(totalCost - discount)
-      + " " + df.format(deliveryTime);
   }
 
   public double getDeliveryTime() {

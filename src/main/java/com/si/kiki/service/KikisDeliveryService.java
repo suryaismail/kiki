@@ -1,4 +1,4 @@
-package com.si.kiki;
+package com.si.kiki.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,12 +8,13 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.si.kiki.model.*;
+import com.si.kiki.offer.OfferService;
 
 public class KikisDeliveryService {
 
   private static final Logger logger = LoggerFactory.getLogger(KikisDeliveryService.class);
 
-  private OfferCodeSet offerCodeSet = new OfferCodeSet();
+  private OfferService offers = new OfferService();
 
   public KikisDeliveryService() {
     super();
@@ -100,7 +101,7 @@ public class KikisDeliveryService {
       List<Pkg> packages) {
 
     return packages.stream().map(
-        n -> n.getOutputLine(offerCodeSet, baseDeliveryCost))
+        n -> PkgPrinter.getOutputLine(offers, n, baseDeliveryCost))
         .collect(Collectors.toList());
   }
 
@@ -147,7 +148,7 @@ public class KikisDeliveryService {
     }
 
     return pkgs.stream().map(
-        n -> n.getOutputLineWithDeliveryTime(offerCodeSet, baseDeliveryCost))
+        n -> PkgPrinter.getOutputLineWithDeliveryTime(offers, n, baseDeliveryCost))
         .collect(Collectors.toList());
   }
 

@@ -1,0 +1,40 @@
+[
+  "com.si.kiki.offer.Offers",
+  {   
+    "offers": [
+      "java.util.HashMap",
+      {
+        "OFR001": [
+          "com.si.kiki.offer.PromoOffer",
+          {
+            "discount": 10,
+            "minWeight": 70,
+            "maxWeight": 200,
+            "minDistance": 0,
+            "maxDistance": 200
+          }
+        ],
+        "OFR002": [
+          "com.si.kiki.offer.PromoOffer",
+          {
+            "discount": 7,
+            "minWeight": 50,
+            "maxWeight": 150,
+            "minDistance": 100,
+            "maxDistance": 250
+          }
+         ],
+        "OFR003": [
+          "com.si.kiki.offer.PromoOffer",
+          {
+            "discount": 5,
+            "minWeight": 50,
+            "maxWeight": 250,
+            "minDistance": 10,
+            "maxDistance": 150
+          }
+        ]
+      }
+    ]
+  }
+]

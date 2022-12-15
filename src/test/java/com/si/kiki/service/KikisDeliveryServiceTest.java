@@ -1,4 +1,4 @@
-package com.si.kiki;
+package com.si.kiki.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;

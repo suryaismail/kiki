@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.si.kiki.service.KikisDeliveryService;
 
-public class KikisDeliveryApp {
+public class CourierApp {
 
-  private static final Logger logger = LoggerFactory.getLogger(KikisDeliveryApp.class);
+  private static final Logger logger = LoggerFactory.getLogger(CourierApp.class);
 
   public static void main( String[] args ) {
     // Not too fond of scanning input but oh well, put it in a try catch
