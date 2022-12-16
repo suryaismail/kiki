@@ -5,9 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +12,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 import com.si.kiki.CourierApp;
+
+// This should be something like an autowired bean in spring
+// But spring seems like overkill
 
 // Reads offer from file in resource
 public class OfferService {
@@ -24,16 +24,7 @@ public class OfferService {
   private static Offers offers = null;
 
   // Serializes offers from a json file in the jar resources
-  public OfferService() {
-    super();
-    try {
-      offers = readOffersFromResource("offerConfig.json");
-    } catch (IOException e) {
-      logger.error("Failed to read configured offer codes", offers);
-    }
-  }
-
-  Offers readOffersFromResource(String resource)
+  static Offers readOffersFromResource(String resource)
       throws IOException {
     PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator.builder()
         .allowIfSubType("com.si.kiki.offer")
@@ -43,7 +34,7 @@ public class OfferService {
     mapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL);
 
     String jsonString = null;
-    try (InputStream in = getClass().getResourceAsStream(resource);
+    try (InputStream in = OfferService.class.getResourceAsStream(resource);
         BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
       jsonString = new BufferedReader(new InputStreamReader(in,
           StandardCharsets.UTF_8)).lines().collect(Collectors.joining(" "));
@@ -52,8 +43,14 @@ public class OfferService {
     return mapper.readValue(jsonString, Offers.class);
   }
   
-  public double calculateDiscount(String code, int weight, int distance, int cost) {
+  public static double calculateDiscount(String code, int weight, int distance, int cost) {
     if (offers == null) {
+      try {
+        offers = readOffersFromResource("offerConfig.json");
+      } catch (IOException e) {
+        offers = new Offers();
+        logger.error("Failed to read configured offer codes", offers);
+      }
       return 0;
     }
     return offers.calculateDiscount(code, weight, distance, cost);

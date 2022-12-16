@@ -1,11 +1,11 @@
 package com.si.kiki.model;
 
 public class Pkg {
+  
   String pkgId;
   int weight;
   int distance;
   String offerCode;
-  double deliveryTime;
 
   public Pkg(String pkgId, int weight, int distance, String offerCode) {
     super();
@@ -46,18 +46,6 @@ public class Pkg {
 
   public String getOfferCode() {
     return offerCode;
-  }
-
-  public double getDeliveryTime() {
-    return deliveryTime;
-  }
-
-  public void setDeliveryTime(double deliveryTime) {
-    this.deliveryTime = deliveryTime;
-  }
-
-  public int getTotalCost(int baseDeliveryCost) {
-    return baseDeliveryCost + (weight * 10) + (distance * 5);
   }
 
 }
