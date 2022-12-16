@@ -1,4 +1,4 @@
-package com.si.kiki.service;
+package com.si.kiki.utils;
 
 import java.text.DecimalFormat;
 import com.si.kiki.model.Pkg;
@@ -10,8 +10,7 @@ public class PkgPrinter {
   // Output: pkg_id1 discount1 total_cost1
   public static String getOutputLine(OfferService offerService, Pkg pkg,
       int baseDeliveryCost) {
-    int totalCost = baseDeliveryCost
-        + (pkg.getWeight() * 10) + (pkg.getDistance() * 5);
+    int totalCost = pkg.getTotalCost(baseDeliveryCost);
     double discount = offerService.calculateDiscount(pkg.getOfferCode(),
         pkg.getDistance(), pkg.getWeight(), totalCost);
 

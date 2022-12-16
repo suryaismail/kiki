@@ -3,16 +3,15 @@ package com.si.kiki.service;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import com.si.kiki.model.Pkg;
+import com.si.kiki.utils.KikisDeliveryService;
 
 public class KikisDeliveryServiceTest {
 
   private KikisDeliveryService kiki = new KikisDeliveryService();
 
   @Test
-  @Disabled
   void sampleInput_estimateCost () {
     List<String> inputLines = new ArrayList<String>();
     inputLines.add("100 3");
@@ -28,19 +27,22 @@ public class KikisDeliveryServiceTest {
   }
 
   @Test
-  @Disabled
-  void packagesOverMaxValue () {
+  void packagesOverMaxWeight () {
     List<Pkg> pkgs = new ArrayList<Pkg>();
     pkgs.add(new Pkg("PKG1", 55, 10, "OFR001"));
     pkgs.add(new Pkg("PKG2", 21, 10, "OFR001"));
 
     List<String> outputLines = kiki.estimateDeliveryTimes(0, 0, 0, 20, pkgs);
-    assertEquals("PKG1 0 620 0", outputLines.get(0));
-    assertEquals("PKG2 0 280 0", outputLines.get(1));
+    assertEquals("PKG1 0 600 0", outputLines.get(0));
+    assertEquals("PKG2 0 260 0", outputLines.get(1));
   }
-
+/*
+ *     return baseDeliveryCost + (weight * 10) + (distance * 5);
+offerCodeMap.put("OFR001", new OfferCode(10, 0, 200, 70, 200));
+offerCodeMap.put("OFR002", new OfferCode(7, 50, 150, 100, 250));
+offerCodeMap.put("OFR003", new OfferCode(5, 50, 250, 10, 150));
+ */
   @Test
-  @Disabled
   void selfTest_estimateDeliveryTime () {
     List<Pkg> pkgs = new ArrayList<Pkg>();
     pkgs.add(new Pkg("PKG1", 55, 10, "OFR005"));
@@ -52,7 +54,7 @@ public class KikisDeliveryServiceTest {
     pkgs.add(new Pkg("PKG7", 25, 10, "OFR005"));
     pkgs.add(new Pkg("PKG8", 60, 15, "OFR005"));
 
-    List<String> outputLines = kiki.estimateDeliveryTimes(0, 1, 10, 100,
+    List<String> outputLines = kiki.estimateDeliveryTimes(100, 1, 10, 100,
         pkgs);
     // First delivery, starting at 1:00 PKG3 PKG7 PKG6
     // Second delivery, starting at 2:00 PKG4 PKG2

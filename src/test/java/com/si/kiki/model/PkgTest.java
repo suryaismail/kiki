@@ -3,7 +3,7 @@ package com.si.kiki.model;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import com.si.kiki.offer.OfferService;
-import com.si.kiki.service.PkgPrinter;
+import com.si.kiki.utils.PkgPrinter;
 
 public class PkgTest {
 

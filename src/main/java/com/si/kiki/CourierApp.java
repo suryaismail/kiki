@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.si.kiki.service.KikisDeliveryService;
+import com.si.kiki.utils.KikisDeliveryService;
 
 public class CourierApp {
 

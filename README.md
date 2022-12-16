@@ -2,12 +2,61 @@
 
 Code for the Courier coding challenge for Everest Engineering.
 
+## Change log
+
+
+KikiDeliveryService.estimate does not take input from the command line.
+It takes an array of input lines and returns and array of output lines
+KikisDeliveryApp takes input from the command line
+App is renamed for clarity
+
+Offers read from a json file. Offer refactored to an interface and an implementation
+
+
+
+
+
+
+
+--------
+
+Coding practices:
+
+Code is easy to understand but it has few issues.
+
+Code should've been organized in a better way.
+
+Basic input validation added but can be improved.
+
+Code is not extensible & fully testable.
+
+SOLID principles not followed.
+
+
+
+KikisDeliveryService is a bit difficult to understand how code works. This should be refactored properly.
+
+KikisDeliveryService class has all core logic of the app which can be split into separate & meaningful classes to segregate the responsibilities(Cost calculation & Time calculation) etc.
+
+There are few utils methods which can have their own Utils class.
+Class design can be improved.
+
+DeliveryCostEstimation:
+
+
+DeliveryTimeEstimation:
+
+But code is not optimized and not easy to follow the code flow. This should be refactored and optimized
+
+
+
 ### Development environment
 
 * Java 11 (adoptopenjdk-11.jdk)
 * Apache Maven 3.8.6
 * logback-classic
 * Junit 5
+* jackson
 
 ### Assumptions
 

@@ -56,4 +56,8 @@ public class Pkg {
     this.deliveryTime = deliveryTime;
   }
 
+  public int getTotalCost(int baseDeliveryCost) {
+    return baseDeliveryCost + (weight * 10) + (distance * 5);
+  }
+
 }

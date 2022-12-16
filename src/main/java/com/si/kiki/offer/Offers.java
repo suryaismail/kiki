@@ -34,7 +34,7 @@ public class Offers {
   
   public double calculateDiscount(String code, int weight, int distance, int cost) {
     Offer offer = offers.get(code);
-    if (offers == null) {
+    if (offer == null) {
       return 0;
     }
     

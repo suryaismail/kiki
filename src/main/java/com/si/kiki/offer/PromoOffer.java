@@ -45,8 +45,7 @@ public class PromoOffer implements Offer {
 
   @Override
   public double calculateDiscount(String code, int weight, int distance, int cost) {
-    if ((distance < minDistance)
-        || (distance > maxDistance)) {
+    if ((distance < minDistance) || (distance > maxDistance)) {
       return 0;
     }
     if ((weight < minWeight) || (weight > maxWeight)) {

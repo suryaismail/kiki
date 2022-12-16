@@ -1,4 +1,4 @@
-package com.si.kiki.service;
+package com.si.kiki.utils;
 
 import java.util.ArrayList;
 import java.util.Collections;

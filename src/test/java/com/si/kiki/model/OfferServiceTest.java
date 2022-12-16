@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import com.si.kiki.offer.OfferService;
 
-public class OfferCodeSetTest {
+public class OfferServiceTest {
 
   private OfferService offerService = new OfferService();
 
