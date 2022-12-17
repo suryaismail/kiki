@@ -27,7 +27,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>com.si.kiki.KikisDeliveryApp</mainClass>
+                  <mainClass>com.si.kiki.CourierApp</mainClass>
                 </transformer>
               </transformers>
             </configuration>

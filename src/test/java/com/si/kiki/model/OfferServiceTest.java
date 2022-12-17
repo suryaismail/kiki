@@ -7,12 +7,12 @@ import com.si.kiki.offer.OfferService;
 public class OfferServiceTest {
 
   @Test
-  void givenInvalidOfferCode_thenReturn0 () {
+  void whenInvalidOfferCode_thenReturn0 () {
     assertEquals(0, OfferService.calculateDiscount("OFR004", 5, 5, 100));
   }
 
   @Test
-  void edgeValues () {
+  void whenEdgeCases_thenReturnDiscount () {
 
     assertEquals(5, OfferService.calculateDiscount("OFR003", 50, 100, 100));
     assertEquals(5, OfferService.calculateDiscount("OFR003", 250, 100, 100));
@@ -22,7 +22,7 @@ public class OfferServiceTest {
   }
 
   @Test
-  void invalidValues_noDiscount () {
+  void whenWeighAndDeliveryNotValid_noDiscount () {
     assertEquals(0, OfferService.calculateDiscount("OFR003", 49, 100, 100));
     assertEquals(0, OfferService.calculateDiscount("OFR003", 251, 100, 100));
 
